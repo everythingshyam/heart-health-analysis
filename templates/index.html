@@ -1,0 +1,484 @@
+{% extends 'base.html' %} {% block body %}
+<!--Slideshow-->
+<!-- <div class ="container-fluid my-2"> -->
+<div
+  class=""
+  style="height: 95vh; margin: 0; margin-bottom: 50px; overflow: hidden"
+>
+  <!-- <div id="carouselExampleDark" class="carousel carousel-dark slide occupy-screen" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+   
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="1000">
+          <img src="https://www.summithealth.com/sites/default/files/2023-04/heart-disease-hub.jpg" class="d-block w-100 slideshow-img" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Heart Disease Detection</h5>
+            <p></p>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="static/Images/2.jpg" class="d-block w-100 slideshow-img" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Heart Disease Detection</h5>
+            <p></p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="static/Images/3.jpg" class="d-block w-100 slideshow-img" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Heart Disease Detection</h5>
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div> -->
+  <img
+    src="https://www.summithealth.com/sites/default/files/2023-04/heart-disease-hub.jpg"
+    class=""
+    style="width: 100vw; z-index: 0"
+    alt="..."
+  />
+  <div
+    style="
+      position: relative;
+      left: 50vw;
+      top: -850px;
+      z-index: 1;
+      width: 45vw;
+      color: white;
+    "
+  >
+    <h1 style="font-size: 400%">Embrace the gift of life, with every beat.</h1>
+    <div
+      class="action-buttons"
+      style="display: flex; flex-direction: row-reverse"
+    >
+      {% if user.is_authenticated %}
+      <a
+        class="action-btn"
+        href="/input"
+        style="
+          text-decoration: none;
+          color: white;
+          background-color: black;
+          padding: 20px;
+          margin-right: 50px;
+          margin-top: 10px;
+          font-size: large;
+          border-radius: 20px;
+          border: 1px solid white;
+        "
+        onmouseover="this.style.backgroundColor='#dc3545'"
+        onmouseout="this.style.backgroundColor='black'"
+        >Predict Your Heart Health</a
+      >
+      {% else %}
+      <a
+        class="action-btn"
+        href="\login1"
+        style="
+          text-decoration: none;
+          color: white;
+          background-color: black;
+          padding: 20px;
+          margin-right: 50px;
+          margin-top: 10px;
+          font-size: large;
+          border-radius: 20px;
+          border: 1px solid white;
+        "
+        onmouseover="this.style.backgroundColor='#dc3545'"
+        onmouseout="this.style.backgroundColor='black'"
+        >Predict Your Heart Health</a
+      >
+      {% endif %}
+    </div>
+    <style></style>
+  </div>
+</div>
+
+<!--Cards-->
+<!-- <section id="portfolio" class="portfolio section-bg"> -->
+<div class="container">
+  <!-- <div class="section-title"> -->
+  <!-- <h3 style="color: red">Working on this part...</h3> -->
+  <div
+    class="section-content"
+    style="
+      background-color: rgba(220, 220, 220, 0.8);
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    "
+  >
+    <h2><strong>A healthy heart, DOs and DONTs</strong></h2>
+    <ul style="list-style-type: none">
+      <li>
+        <h3>Know Cholesterol, before you say NO to Cholesterol</h3>
+        <p>
+          Not all fats are harmful; some are essential for the body's normal
+          functioning. Fats aid in the absorption and storage of fat-soluble
+          vitamins (A, D, E, K). Cholesterol, produced from fat metabolism,
+          supports digestion, hormone metabolism, and vitamin D synthesis.
+          High-density lipoprotein (HDL) is beneficial as it helps remove plaque
+          from arteries, while low-density lipoprotein (LDL) can contribute to
+          artery clogging.
+        </p>
+      </li>
+      <li>
+        <h3>Regular Tests</h3>
+        <p>
+          After the age of 35, regular health checks become vital for monitoring
+          overall health and lifestyle. Essential tests include cholesterol
+          levels, blood pressure, and diabetes screening. Additional tests may
+          be recommended based on age, gender, and lifestyle by a heart
+          specialist for better health monitoring and lifestyle adjustments.
+        </p>
+      </li>
+      <li>
+        <h3>Active Lifestyle</h3>
+        <p>
+          Being physically active reduces the risk of heart diseases. An active
+          lifestyle involves regular movement, such as walking, exercise, and
+          strength training sessions. Incorporating basic movements at work and
+          activities like gardening or housework at home promotes an active
+          lifestyle.
+        </p>
+      </li>
+      <li>
+        <h3>Heart-Healthy Diet</h3>
+        <p>
+          Making simple dietary changes can have long-term health benefits.
+          Consume a balanced diet, including vegetables, fruits, whole grains,
+          fish, legumes, and healthy fats. Hydration, chewing food slowly, and
+          keeping heart-healthy snacks handy are essential dietary practices.
+          Limit intake of salt, sugar, red meat, processed foods, and high-sugar
+          beverages.
+        </p>
+      </li>
+      <li>
+        <h3>Snooze it before you lose it</h3>
+        <p>
+          Quality sleep is crucial for overall health and well-being. Adults
+          need 6-8 hours of sound sleep for optimal recovery. Maintaining a
+          consistent sleep schedule, regular exercise, and minimizing screen
+          time before bedtime promote good sleep.
+        </p>
+      </li>
+      <li>
+        <h3>Reduce Stress</h3>
+        <p>
+          Stress management is vital for maintaining heart health. Activities
+          such as socializing, exercising, meditation, and pursuing hobbies can
+          help reduce stress levels.
+        </p>
+      </li>
+      <li>
+        <h3>Dental Hygiene</h3>
+        <p>
+          Good dental hygiene is linked to heart health. Basic practices like
+          brushing and flossing regularly can reduce the risk of heart disease.
+        </p>
+      </li>
+      <li>
+        <h3>Stay Away from Tobacco</h3>
+        <p>
+          Tobacco use, including passive smoking, increases the risk of heart
+          disease and other health issues. Avoiding tobacco in all forms is
+          essential for maintaining heart health.
+        </p>
+      </li>
+    </ul>
+  </div>
+  <!-- <p>Working on this part...</p> -->
+  <div
+    class="section-content"
+    style="
+      background-color: rgba(220, 220, 220, 0.8);
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    "
+  >
+    <h2><strong>How can Prediction System help?</strong></h2>
+    <!-- <p>Working on this part...</p> -->
+    <ul style="list-style-type: none">
+      <li>
+        <h3>Personalized Risk Assessment</h3>
+        <p>
+          By analyzing historical health data and trends, a prediction system
+          can provide personalized risk assessments for individuals, guiding
+          them towards tailored lifestyle modifications and treatment plans.
+          This personalized approach enhances the effectiveness of
+          interventions, leading to better health outcomes. (Source: Mayo
+          Clinic)
+        </p>
+      </li>
+      <li>
+        <h3>Early Detection of Abnormalities</h3>
+        <p>
+          Utilizing machine learning algorithms, a prediction system can
+          identify subtle deviations in heart parameters, allowing for early
+          detection of abnormalities and potential cardiovascular diseases.
+          Early intervention based on these predictions can significantly reduce
+          the risk of adverse health events and improve prognosis. (Source:
+          National Institutes of Health)
+        </p>
+      </li>
+      <li>
+        <h3>Healthcare Resource Optimization</h3>
+        <p>
+          Implementing a prediction system in healthcare settings can optimize
+          resource allocation by prioritizing high-risk individuals for timely
+          interventions, thus improving overall healthcare efficiency and
+          patient outcomes. This targeted approach ensures that limited
+          healthcare resources are utilized effectively, maximizing the impact
+          on population health. (Source: World Health Organization)
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div
+    class="section-content"
+    style="
+      background-color: rgba(220, 220, 220, 0.8);
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    "
+  >
+    <h2><strong>Some common types of heart diseases</strong></h2>
+    <!-- <div
+      class="row portfolio-container"
+      data-aos="fade-right"
+      data-aos-delay="500"
+    > -->
+    <ul style="list-style-type: none">
+      <li
+        style="
+          display: grid;
+          grid-template-columns: 2fr 3fr;
+          gap: 10px;
+          margin-bottom: 10px;
+        "
+      >
+        <div
+          style="
+            aspect-ratio: 3/2;
+            background-color: rgb(230, 230, 230);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;border-radius: 10px;
+          "
+        >
+          <img
+            src="https://www.maxlab.co.in/category/1665661641.jpg"
+            style="max-width: 100%; max-height: 100%;"
+          />
+        </div>
+        <div>
+          <h4>Coronary Artery Disease</h4>
+          <p>
+            Coronary artery disease (CAD) occurs when plaque builds up inside
+            the coronary arteries, which supply oxygen-rich blood to the heart
+            muscle. This narrowing of the arteries restricts blood flow to the
+            heart, leading to chest pain (angina), shortness of breath, and in
+            severe cases, heart attack.
+          </p>
+        </div>
+      </li>
+
+      <li
+        style="
+          display: grid;
+          grid-template-columns: 2fr 3fr;
+          gap: 10px;
+          margin-bottom: 10px;
+        "
+      >
+        <div
+          style="
+            aspect-ratio: 3/2;
+            background-color: rgb(230, 230, 230);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;border-radius: 10px;
+          "
+        >
+          <img
+            src="https://my.clevelandclinic.org/-/scassets/images/org/health/articles/21736-cardiac-arrest-illustration"
+            style="max-width: 100%; max-height: 100%;"
+          />
+        </div>
+        <div class="portfolio-info">
+          <h4>Cardiac Arrest</h4>
+          <p>
+            Cardiac arrest is a sudden, unexpected loss of heart function, often
+            caused by an electrical disturbance in the heart that stops it from
+            pumping blood effectively. Without prompt treatment, cardiac arrest
+            can be fatal within minutes. Immediate CPR and defibrillation are
+            vital for survival.
+          </p>
+        </div>
+      </li>
+
+      <li
+        style="
+          display: grid;
+          grid-template-columns: 2fr 3fr;
+          gap: 10px;
+          margin-bottom: 10px;
+        "
+      >
+        <div
+          style="
+            aspect-ratio: 3/2;
+            background-color: rgb(230, 230, 230);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;border-radius: 10px;
+          "
+        >
+          <img
+            src="https://my.clevelandclinic.org/-/scassets/images/org/health/articles/17351-pericardial-effusion"
+            style="max-width: 100%; max-height: 100%;"
+          />
+        </div>
+        <div class="portfolio-info">
+          <h4>Pericardial Disease</h4>
+          <p>
+            Pericardial disease involves inflammation or other abnormalities of
+            the pericardium, the thin sac that surrounds the heart. Conditions
+            such as pericarditis (inflammation of the pericardium) or
+            pericardial effusion (accumulation of fluid in the pericardial
+            space) can lead to chest pain, difficulty breathing, and potentially
+            life-threatening complications if left untreated.
+          </p>
+        </div>
+      </li>
+
+      <li
+        style="
+          display: grid;
+          grid-template-columns: 2fr 3fr;
+          gap: 10px;
+          margin-bottom: 10px;
+        "
+      >
+        <div
+          style="
+            aspect-ratio: 3/2;
+            background-color: rgb(230, 230, 230);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;border-radius: 10px;
+          "
+        >
+          <img
+            src="https://www.godigit.com/content/dam/godigit/directportal/en/contenthm/congestive-heart-failure.jpg"
+            style="max-width: 100%; max-height: 100%;"
+          />
+        </div>
+        <div class="portfolio-info">
+          <h4>Congestive Heart Failure</h4>
+          <p>
+            Congestive heart failure (CHF) occurs when the heart is unable to
+            pump blood effectively to meet the body's demands. This results in
+            fluid buildup (congestion) in various parts of the body, leading to
+            symptoms such as fatigue, swelling in the legs, and shortness of
+            breath. CHF requires lifelong management to improve symptoms and
+            prevent complications.
+          </p>
+        </div>
+      </li>
+      <li
+        style="
+          display: grid;
+          grid-template-columns: 2fr 3fr;
+          gap: 10px;
+          margin-bottom: 10px;
+        "
+      >
+        <div
+          style="
+            aspect-ratio: 3/2;
+            background-color: rgb(230, 230, 230);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;border-radius: 10px;
+          "
+        >
+          <img
+            src="https://drraghu.com/wp-content/uploads/2022/07/Cong.-Heart-Disease.jpg"
+            style="max-width: 100%; max-height: 100%;"
+          />
+        </div>
+        <div>
+          <h4>Congenital Heart Disease</h4>
+          <p>
+            Congenital heart disease refers to structural abnormalities of the
+            heart that are present at birth. These defects can affect the heart
+            chambers, valves, or major blood vessels, leading to irregular blood
+            flow and potentially life-threatening complications. Treatment may
+            involve medication, surgery, or other interventions to correct or
+            manage the defect.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="section-content" style="
+  background-color: rgba(220, 220, 220, 0.8);
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+">
+  <h2><strong>References Used For Information</strong></h2>
+    <ul style="list-style-type: none">
+      <li>
+        <a target="_blank" href="https://www.heart.org/en"
+          >American Heart Association</a
+        >
+      </li>
+      <li>
+        <a target="_blank" href="https://www.mayoclinic.org/">Mayo Clinic</a>
+      </li>
+      <li>
+        <a target="_blank" href="https://www.nih.gov/"
+          >National Institutes of Health</a
+        >
+      </li>
+      <li>
+        <a target="_blank" href="https://www.who.int/"
+          >World Health Organization</a
+        >
+      </li>
+      <li>
+        <a
+          target="_blank"
+          href="https://www.manipalhospitals.com/ghaziabad/blog/do-s-and-don-ts-to-keep-your-heart-healthy/#:~:text=Keep%20heart%2Dhealthy%20snacks%20like,drinking%20high%2Dsugar%20carbonated%20beverages."
+          >Manipal Hospitals</a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- </section> -->
+{% endblock body %}
