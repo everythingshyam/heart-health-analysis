@@ -114,15 +114,21 @@ def DT_Model_Training():
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=10)
 
 
-    from sklearn.tree import DecisionTreeClassifier
-    svcclassifier = DecisionTreeClassifier()
+    # from sklearn.tree import DecisionTreeClassifier
+    # svcclassifier = DecisionTreeClassifier()
+    # svcclassifier.fit(x_train, y_train)
+
+    # y_pred = svcclassifier.predict(x_test)
+    # print(y_pred)
+
+    from sklearn.svm import SVC
+    svcclassifier = SVC(kernel='linear',random_state=6)
+    
     svcclassifier.fit(x_train, y_train)
 
     y_pred = svcclassifier.predict(x_test)
     print(y_pred)
 
-
-    
     print("=" * 40)
     print("==========")
     print("Classification Report : ",(classification_report(y_test, y_pred)))
@@ -134,8 +140,8 @@ def DT_Model_Training():
     
     
     from joblib import dump
-    dump (svcclassifier,"DT.joblib")
-    print("Model saved as DT.joblib")
+    dump (svcclassifier,"SVM1.joblib")
+    print("Model saved as SVM1.joblib")
 
 
 Model_Training()

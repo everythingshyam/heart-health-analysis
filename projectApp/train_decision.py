@@ -1,17 +1,17 @@
 from subprocess import call
-
+import tkinter as tk
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 from PIL import Image, ImageTk
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+from tkinter import ttk
 from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
-#from sklearn.tree import DecisionTreeClassifier
-
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 
 def Model_Training():
-    data = pd.read_csv("new.csv")
+    data = pd.read_csv("projectApp/new.csv")
     data.head()
 
     data = data.dropna()
@@ -56,16 +56,12 @@ def Model_Training():
     from sklearn.model_selection import train_test_split
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.20, random_state=10)
 
-
-    from sklearn.svm import SVC
-    svcclassifier = SVC(kernel='linear',random_state=6)
-    
+    from sklearn.tree import DecisionTreeClassifier
+    svcclassifier = DecisionTreeClassifier()
     svcclassifier.fit(x_train, y_train)
 
     y_pred = svcclassifier.predict(x_test)
     print(y_pred)
-
-
     
     print("=" * 40)
     print("==========")
@@ -75,7 +71,7 @@ def Model_Training():
     print("Accuracy: %.2f%%" % (accuracy * 100.0))
     ACC = (accuracy_score(y_test, y_pred) * 100)
     repo = (classification_report(y_test, y_pred))
-
+    
     print("Confusion Matrix :")
     cm = confusion_matrix(y_test,y_pred)
     print(cm)
@@ -87,11 +83,10 @@ def Model_Training():
     plt.ylabel('Actuals', fontsize=18)
     plt.title('Confusion Matrix', fontsize=18)
     plt.show()
-
+    
     from joblib import dump
-    dump (svcclassifier,"svm_heart.joblib")
-    print("Model saved as svm_heart.joblib")
+    dump (svcclassifier,"Dec_heart.joblib")
+    print("Model saved as Dec_heart.joblib")
 
 
 Model_Training()
-'''+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'''
