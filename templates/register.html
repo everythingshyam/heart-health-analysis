@@ -1,22 +1,28 @@
-
 {% extends "base.html" %}
+<!--  -->
 {% load crispy_forms_tags %}
-
+<!--  -->
 {% block title %}Registration{%endblock title %}
-
+<!--  -->
 {% block body %}
-    
-
-<!--Register--> 
-<div class="container py-5">
-	<h1>Register</h1>
-	<form method="POST">
-		{% csrf_token %}
-		  {{ register_form|crispy }}   
-      <br>                 
-		<button class="btn btn-primary" type="submit">Register</button>
-	</form>
-	<p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+<div class="mid-page" id="auth-form">
+  <div class="form-heading">
+    <h1>Register</h1>
+  </div>
+  <hr />
+  <div class="medical-form">
+    <form method="POST">
+      {% csrf_token %} {{ register_form|crispy }}
+      <div class="form-section submit-btn-outer">
+        <button class="submit-btn brand-link" type="submit">Register</button>
+      </div>
+      <div class="form-footer form-section">
+        <p>
+          If you already have an account?
+          <strong><a href="/login1">Login</a></strong>.
+        </p>
+      </div>
+    </form>
+  </div>
 </div>
-
 {% endblock %}

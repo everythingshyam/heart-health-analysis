@@ -1,140 +1,562 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../static/Images/logo.png" type="image/png">
     <title>{% block title %} {%endblock title %} Heart Health Prediction</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="../static/CSS/index.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    {% block style %} {% endblock style %}
+    <style>
+      :root {
+        --color-brand: rgb(230, 37, 85);
+        --color-brand-light: #ff7979;
+        --color-brand-fade: rgba(255, 121, 121, 0.2);
+        --color-brand-dark: rgb(255, 16, 16);
+        --color-inactive: #6a7062;
+        --color-inactive-fade: rgba(106, 112, 98, 0.5);
+        --color-black: #010309;
+        --color-black-fade: #b0b0b0;
+        --color-white: rgb(250, 246, 246);
+        --color-white-trans: rgba(250, 246, 246, 0.7);
+        --color-white-trans-2: rgba(250, 246, 246, 0.4);
+      }
+
+      body {
+        background-image: url("../static/Images/unsplash-stethoscope.jpg");
+        background-size: contain;
+        color: var(--color-black);
+        font-family: "Poppins", sans-serif;
+        z-index: 0;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        background-color: var(--color-white-trans);
+        padding: 0;
+        margin: 0;
+      }
+
+      a {
+        color: var(--color-black);
+        text-decoration: none;
+        transition: 0.2s ease-out;
+      }
+      a:hover {
+        color: var(--color-brand);
+        cursor: pointer;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      nav {
+        box-shadow: var(--color-inactive) 1px 1px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px 10px;
+        position: sticky;
+        top: 0;
+        background-color: var(--color-white-trans);
+        backdrop-filter: blur(5px);
+        z-index: 2;
+      }
+
+      .nav-inner {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .nav-inner > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .nav-inner > div > ul {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .nav-item {
+        padding: 5px;
+      }
+
+      .nav-item > a {
+        font-size: 120%;
+      }
+
+      .nav-logo {
+        display: flex;
+      }
+      .nav-logo > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .brand-logo {
+        font-size: 200%;
+        font-weight: 500;
+        color: var(--color-brand);
+      }
+
+      .brand-logo:hover {
+        text-shadow: 1px 1px 2px rgb(200, 200, 200);
+      }
+
+      #main-logo-img {
+        height: 25px;
+      }
+
+      .hero-page {
+        height: 90vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-sub {
+        height: 60vh;
+        width: 80vw;
+        display: grid;
+        grid-template-rows: 2fr 1fr;
+      }
+
+      .hero-sub > * {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero-text > * {
+        display: flex;
+        width: 100%;
+        font-size: 60px;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 0px;
+        margin: 0px 0px;
+      }
+
+      .hero-link {
+        justify-content: flex-start;
+      }
+
+      .hero-link > a {
+        padding: 15px;
+        font-size: 25px;
+        font-weight: bold;
+        border-radius: 40px;
+      }
+
+      .brand-link {
+        border: 2px solid var(--color-brand);
+        color: var(--color-brand);
+        transition: all 0.1s ease-out;
+        cursor: pointer;
+      }
+
+      .brand-link:hover {
+        background-color: var(--color-brand);
+        color: var(--color-white);
+        box-shadow: var(--color-black) 1px 1px 5px;
+      }
+
+      .hero-lower {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        padding-top: 0;
+      }
+
+      .section-outer:nth-child(even) {
+        display: flex;
+        justify-content: right;
+        align-items: end;
+      }
+
+      .section-outer {
+        width: 100%;
+        display: flex;
+      }
+
+      .section {
+        display: inline;
+        background-color: rgba(202, 202, 202, 0.5);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 10px 5px var(--color-black-fade);
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        width: 85%;
+      }
+
+      .mid-page {
+        border: 2px solid var(--color-brand);
+        min-height: 90vh;
+        width: 50vw;
+        margin: 40px auto;
+        /* border: 1px solid black; */
+        border-radius: 40px;
+        background-color: rgba(202, 202, 202, 0.2);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 10px 5px var(--color-black-fade);
+      }
+
+      .form-heading {
+        display: flex;
+        justify-content: center;
+        padding: 30px 10px 0 0;
+      }
+
+      .form-heading > h1 {
+        color: var(--color-brand);
+        padding: 0 5px;
+        margin: 0;
+        font-size: 30px;
+      }
+
+      .medical-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+      }
+
+      .medical-form > form {
+        width: 80%;
+        /* border: 1px solid red; */
+        margin: 10px;
+        padding: 20px;
+        display: block;
+        /* grid-template-columns: repeat(2,1fr); */
+        /* grid-template-columns: 1fr; */
+        grid-gap: 0 20px;
+      }
+
+      .form-section {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-section > * {
+        margin: 5px;
+        cursor: pointer;
+      }
+
+      .form-label {
+        margin-left: 5px;
+        margin-bottom: 0;
+      }
+
+      .form-input {
+        margin-top: 1;
+        padding: 8px;
+        border-radius: 20px;
+        border: none;
+        box-shadow: var(--color-inactive-fade) 0px 0px 10px;
+      }
+
+      .form-input:focus {
+        /* box-shadow: var(--color-brand-fade) 0px 0px 10px; */
+        border: 2px solid var(--color-brand);
+        outline: none;
+      }
+
+      .submit-btn-outer {
+        margin-top: 20px;
+        grid-column: 1/3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .submit-btn {
+        font-size: 17px;
+        width: 30vw;
+        height: 40px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #auth-form{
+        min-height: 40vh;
+      }
+
+      #auth-form form {
+        width: 50%;
+      }
+
+      #auth-form .submit-btn{
+        width: 10vw;
+      }
+
+      .form-footer{
+        font-size: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-text{
+        display: none;
+      }
+
+      .mid-body {
+        border: 2px solid var(--color-brand);
+        min-height: 60vh;
+        width: 60vw;
+        margin: 40px auto;
+        border-radius: 40px;
+        background-color: rgba(202, 202, 202, 0.2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 10px 5px var(--color-black-fade);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .result {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(1fr, 2fr);
+        width: 100%;
+        height: 100%;
+      }
+
+      .result > * {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .result-label {
+        font-size: 40px;
+        border-bottom: 1px solid var(--color-black-fade);
+        color: var(--color-brand);
+      }
+
+      .result-text {
+        font-size: 50px;
+        padding: 10px;
+        background-color: var(--color-brand);
+        color: var(--color-white);
+      }
+
+      .report {
+        border: 2px solid var(--color-brand);
+        min-height: 60vh;
+        width: 70vw;
+        margin: 40px auto;
+        border-radius: 40px;
+        background-color: rgba(202, 202, 202, 0.2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 10px 5px var(--color-black-fade);
+      }
+
+      .report-inner > * {
+        border-bottom: 1px solid var(--color-brand);
+        padding:10px;
+      }
+
+      .report-inner:last-child{
+        border-bottom: 1px solid black;
+      }
+
+      .report > .header {
+        display: flex;
+        justify-content: center;
+        font-size: 30px;
+        height: 60px;
+        border-bottom: 2px solid var(--color-brand);
+      }
+
+      .header{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--color-brand);
+      }
+
+      .report .head{
+        color: var(--color-brand);
+        font-size: 20px;
+        font-weight: bold;
+        border-bottom: 1px solid var(--color-black-fade);
+        margin-bottom: 10px;
+      }
+
+      .report .result{
+        font-weight: bold;
+      }
+
+      .health .result{
+        display: flex;
+      }
+
+      .bar-container{
+        background-color: var(--color-white);
+        width: 60vw;
+        height: 10px;
+        border-radius: 20px;
+        border: 2px solid var(--color-brand);
+        display: flex;
+        justify-content: flex-start;
+      }
+
+      .bar{
+        border-radius: 20px 0px 0 20px;
+        height:100%; background-color:rgb(230, 37, 85)
+      }
+
+      .print-outer{
+        padding: 10px 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .print-outer>*{
+        font-size: 20px;
+      }
+
+      footer {
+        box-shadow: var(--color-inactive) 1px 1px 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: var(--color-white-trans-2);
+        backdrop-filter: blur(5px);
+      }
+
+      .footer-links {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+
+      .footer-links > a {
+        padding: 10px;
+      }
+
+      .footer-text {
+        padding: 10px 0 0 0;
+      }
+
+      .footer-text > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .desclaimer-text {
+        font-size: 10px;
+      }
+    </style>
   </head>
-  <style> {% block style %} {%endblock style %} 
-    .custom-scrollbar-js,
-    .custom-scrollbar-css {
-  height: 50px;
-}
-
-
-/* Custom Scrollbar using CSS */
-.custom-scrollbar-css {
-  overflow-y: scroll;
-}
-
-/* scrollbar width */
-.custom-scrollbar-css::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* scrollbar track */
-.custom-scrollbar-css::-webkit-scrollbar-track {
-  background: rgb(240, 234, 239);
-}
-
-/* scrollbar handle */
-.custom-scrollbar-css::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
-  background-color: #eaecec;
-  background-image: linear-gradient(to top, #f6fbfc 0%, #e9edf1 100%);
-}
-
-body {
-  min-height: 50vh;
-  background-color: #00d2ff;
-  background-image: linear-gradient(to right, #e7eaeb 0%, #f4f5f7 100%);
-}
-</style>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="\index">Heart Health Prediction</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-bar-inner" style="display: flex;justify-content: space-between;">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="\index">Home<span class="sr-only"></span> </a>
-              </li>
-              {% if user.is_authenticated %}
-              <div class="nav-section" style="display: flex;">
-                  <li class="nav-item">
-                    <a class="nav-link" href="\input">Heart Health Prediction</a>
-                  </li>
+    <div class="container">
+      <nav>
+        <div class="nav-inner">
+          <div class="nav-left">
+            <ul>
+              <li class="nav-item nav-logo">
+                <div>
+                  <img src="../static/Images/logo.png" alt="img" id="main-logo-img" />
                 </div>
-                <div class="nav-section" style="display: flex;">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">|</a>
-                    </li>
-                    </div>
-                  <div class="nav-section" style="display: flex;">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#"><strong>{{user.username}}</strong></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="\logout_request">Logout</a>
-                  </li>
-              {% else %}
-              <div class="nav-section" style="display: flex;">
-                  <li class="nav-item">
-                    <a class="nav-link" href="\register">Registration</a>
-                  </li>
-                  </div>
-                  <div class="nav-section" style="display: flex;">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">|</a>
-                      </li>
-                      </div>
-              <div class="nav-section" style="display: flex;">
-                  <li class="nav-item">
-                    <a class="nav-link" href="\login1">Login</a>
-                  </li>
-              {% endif %}  
-</div>
+                <div>
+                  <a class="brand-logo" href="\index"
+                    >Heart Health Prediction</a
+                  >
+                </div>
+              </li>
             </ul>
-            <form class="d-flex" role="search">
-              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button> -->
-            </form>
+          </div>
+          <div class="nav-right">
+            <ul>
+              {% if user.is_authenticated %}
+              <li class="nav-item">
+                <a href="#"><strong>{{user.username}}</strong></a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">|</a>
+              </li>
+              <li class="nav-item">
+                <a href="\logout_request">Logout</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a href="\register">Registration</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">|</a>
+              </li>
+              <li class="nav-item">
+                <a href="\login1">Login</a>
+              </li>
+              {% endif %}
+            </ul>
           </div>
         </div>
       </nav>
-    
-{% block body %}{% endblock body %}
 
+      {% block body %}{% endblock body %}
 
-
-
-<footer class="footer-03">
-    <div class="container-fluid bg-danger" style="margin-top: 30px;">
-    <div class="row justify-content-center">
-    <div class="col-md-12 text-center">
-    <!-- <h2 class="footer-heading"><a href="#" class="logo">Heart Disease Prediction</a></h2>
-    <p class="menu">
-    <a href="#">Home</a> -->
-    
-    <ul class="ftco-footer-social p-0">
-    <!-- <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="ion-logo-twitter"></span></a></li>
-    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="ion-logo-facebook"></span></a></li>
-    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="ion-logo-instagram"></span></a></li> -->
-    </ul>
+      <footer>
+        <div class="footer-links">
+          <a href="#" target="_blank" rel="noopener noreferrer">The Team</a>
+          <a href="#" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+          <a href="#" target="_blank" rel="noopener noreferrer"
+            >Research Paper</a
+          >
+          {% if user.is_authenticated %}
+          <a href="\input" target="_blank" rel="noopener noreferrer"
+            >Previous Iteration</a
+          >
+          {% else %}
+          <a href="\login1" target="_blank" rel="noopener noreferrer"
+            >Previous Iteration</a
+          >
+          {% endif %}
+          <a href="#" target="_blank" rel="noopener noreferrer">References</a>
+        </div>
+        <div class="footer-text">
+          <div>&copy; GC10 - Final Year PCCOE, Pune</div>
+          <hr />
+          <div class="desclaimer-text">
+            Disclaimer: The information presented on this website is compiled
+            from sources believed to be reliable. However, we do not warrant or
+            guarantee the accuracy, completeness, or currency of the information
+            provided. You are advised to consult with appropriate professionals
+            and conduct your own independent verification of any information you
+            intend to rely upon before making any decisions or taking any
+            actions based on the information contained on this website..
+          </div>
+          <div class="desclaimer-text">
+            <a href="https://unsplash.com/photos/black-and-gray-stethoscope-yo01Z-9HQAw?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+            Photo by Hush Naidoo Jade Photography on Unsplash</a>
+          </div>
+        </div>
+      </footer>
     </div>
-    </div>
-    <div class="row mt-5">
-    <div class="col-md-12 text-center text-white" style="padding-bottom:30px;">
-      &copy; GC10 - Final Year PCCOE, Pune
-      <!-- <p class="copyright">
-    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ion-ios-heart" aria-hidden="true"></i> by <a href="#" target="_blank">hatespeechfakenews.com</a>
-    </p> -->
-    </div>
-    </div>
-    </div>
-  
-  
-  
-  
-  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>  
-  </footer>
-</body>
+  </body>
 </html>

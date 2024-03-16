@@ -1,28 +1,147 @@
 {% extends 'base1.html' %}
-{% block style %} 
-
-{%endblock style %} 
-
-{% block title %}Heart Disease Prediction{%endblock title %}
-
+<!--  -->
+{% block style %} {%endblock style %}
+<!--  -->
+{% block title %}Analysis Output{%endblock title %}
+<!--  -->
 {% block body %}
-
- <div class ="container my-4">
- </div>
- <div class="container py-5">
-           <div class="card mb-4">
-             <div class="card-body p-5">
-               <h4 class="mb-4" style="font-size:50px;text-align:center;font-size:300%; color: rgb(101, 101, 101);">Prediction Output</h4>
-               <div class="custom-scrollbar-css p-2">
-                 <p class="font-italic" >
-                   <h1 style="font-size:50px;color:black;text-align:center;font-size:300%;"> {{ ans }} </h1></p>
-               </div>
-             </div>
-           </div>
-             </div>
-         </div>
-         </div>
- </div>
- 
- {% endblock body %}
- 
+<div class="report">
+  <div class="header">
+    <div>Analysis Report</div>
+  </div>
+  <div class="report-inner">
+    <div class="health">
+      <div class="head">Heart Health</div>
+      <div class="result">
+        {{health}}%
+        <div class="bar-container">
+          <div class="bar" id="bar"></div>
+        </div>
+      </div>
+      <div class="result">{{ans}}</div>
+    </div>
+    <div class="param">
+      <div class="head">Gender</div>
+      <div class="result">{{param_gender}}</div>
+    </div>
+    <div class="param">
+      <div class="head">Age</div>
+      <div class="result">{{param_gender}}</div>
+    </div>
+    <div class="param">
+      <div class="head">{{cp_head}}</div>
+      <div class="result">{{cp_result}}</div>
+      <div class="note">{{cp_note}}</div>
+      <div class="ref">
+        <strong><a target="_blank" href="{{cp_ref}}">View Reference</a></strong>
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{restbp_head}}</div>
+      <div class="result">{{restbp_result}}</div>
+      <div class="note">{{restbp_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{restbp_ref}}">View Reference</a></strong
+        >
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{chol_head}}</div>
+      <div class="result">{{chol_result}}</div>
+      <div class="note">{{chol_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{chol_ref}}">View Reference</a></strong
+        >
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{fbs_head}}</div>
+      <div class="result">{{fbs_result}}</div>
+      <div class="note">{{fbs_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{fbs_ref}}">View Reference</a></strong
+        >
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{restecg_head}}</div>
+      <div class="result">{{restecg_result}}</div>
+      <div class="note">{{restecg_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{restecg_ref}}">View Reference</a></strong
+        >
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{thalch_head}}</div>
+      <div class="result">{{thalch_result}}</div>
+      <div class="note">{{thalch_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{thalch_ref}}">View Reference</a></strong
+        >
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{exang_head}}</div>
+      <div class="result">{{exang_result}}</div>
+      <div class="note">{{exang_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{exang_ref}}">View Reference</a></strong
+        >
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{oldpeak_head}}</div>
+      <div class="result">{{oldpeak_result}}</div>
+      <div class="note">{{oldpeak_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{oldpeak_ref}}">View Reference</a></strong
+        >
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{slope_head}}</div>
+      <div class="result">{{slope_result}}</div>
+      <div class="note">{{slope_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{slope_ref}}">View Reference</a></strong
+        >
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{ca_head}}</div>
+      <div class="result">{{ca_result}}</div>
+      <div class="note">{{ca_note}}</div>
+      <div class="ref">
+        <strong><a target="_blank" href="{{ca_ref}}">View Reference</a></strong>
+      </div>
+    </div>
+    <div class="param">
+      <div class="head">{{thal_head}}</div>
+      <div class="result">{{thal_result}}</div>
+      <div class="note">{{thal_note}}</div>
+      <div class="ref">
+        <strong
+          ><a target="_blank" href="{{thal_ref}}">View Reference</a></strong>
+      </div>
+    </div>
+  </div>
+  <div class="print-outer">
+    <div class="brand-link submit-btn" onclick="window.print()">
+      Print Report
+    </div>
+  </div>
+</div>
+<script>
+  const width={{health}};
+  document.getElementById('bar').style.width=width+"%";
+</script>
+{% endblock body %}

@@ -1,103 +1,203 @@
 {% extends 'base1.html' %}
-{% block style %} 
-
-{%endblock style %} 
-
-{% block title %}Model 2{%endblock title %}
-
+<!--  -->
+{% block style %} {%endblock style %}
+<!--  -->
+{% block title %}Health Analysis{%endblock title %}
+<!--  -->
 {% block body %}
-
-
-<div class="container">
-    
-        
-            <center><h1>Model 2 (DT)</h1></center> <br><br>
-            <!-- <h2 style="color: red;">Working on it...</h2> -->
-            <div class="row">
-            <div class="col-sm-6">
-   
-                <form action="result_new">
-                    <form>
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="Age">Patient Age</label>
-                        <input type="text" class="form-control" name="Age" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="Gender">Patient Gender</label>
-                        <input type="text" class="form-control" name="Gender" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="Chest_Pain">Patient Chest Pain</label>
-                        <input  list="browsers" type="text"  class="form-control" name="Chest_Pain" placeholder="" required>
-                        <datalist id="browsers">
-                        
-                            <option value=0> Typical </option>
-                            <option value=1>Asymptomatic</option>
-                            <option value=2>Non Typical</option>
-                          
-                        </datalist> 
-                    </div>
-                    <div class="form-group">
-                        <label for="Restbp">Patient Restbp</label>
-                        <input type="text" class="form-control" name="Restbp" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="Chol">Patient Chol</label>
-                        <input type="text"  class="form-control" name="Chol" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="FBS">Patient FBS</label>
-                        <input type="text" class="form-control" name="FBS" placeholder="" required>
-                    </div>
-                </div>
-                    <div class="col-sm-6">
-                    <div class="form-group">
-                        <label for="Restecg">Patient Restecg</label>
-                        <input type="text" class="form-control" name="Restecg" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="thalach">Patient Thalach</label>
-                        <input type="text"  class="form-control" name="thalach" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="Exang">Patient Exang</label>
-                        <input type="text"  class="form-control" name="Exang" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="Oldpeak">Patient Oldpeak</label>
-                        <input type="text"  class="form-control" name="Oldpeak" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="slope">Patient Slope</label>
-                        <input type="text"  class="form-control" name="slope" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="ca">Patient CA</label>
-                        <input type="text" class="form-control" name="ca" placeholder="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="thal">Patient Thal</label>
-                        <input list="browsers1"  type="text"  class="form-control" name="thal" placeholder="" required>
-                        <datalist id="browsers1">                        
-                            <option value=0> Fixed </option>
-                            <option value=1>Normal</option>
-                            <option value=2>Reversable</option>                          
-                        </datalist> 
-                    </div>
-                </div>
-                </div><br>
-    <center><button type="submit" value="Submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button></center><br><br><br><br>
-</form>
-   
+<div class="mid-page">
+  <div class="form-heading">
+    <h1>Heart Health Analysis</h1>
+  </div>
+  <hr />
+  <div class="medical-form">
+    <form action="result_new">
+      <!-- Below token for user verification -->
+      {% csrf_token %}
+      <div class="form-section">
+        <label class="form-label" for="Age">Age</label>
+        <input
+          type="number"
+          min="1"
+          class="form-input"
+          name="Age"
+          placeholder="Ex: 42 (years)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="Gender">Gender</label>
+        <select type="number" class="form-input" name="Gender" required>
+          <option value="0">Male</option>
+          <option value="1">Female</option>
+        </select>
+        <!-- <input
+          type="number" min="0"
+          class="form-input"
+          name="Gender"
+          placeholder=""
+          required
+        /> -->
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="Chest_Pain">Chest Pain</label>
+        <select type="number" class="form-input" name="Chest_Pain" required>
+          <option value="0">Typical</option>
+          <option value="1">Asymptomatic</option>
+          <option value="2">Non Anginal</option>
+            <option value="3">Atypical</option>
+        </select>
+        <!-- <input
+          list="browsers"
+          type="number" min="0"
+          class="form-input"
+          name="Chest_Pain"
+          placeholder=""
+          required
+        />
+        <datalist id="browsers">
+          <option value="0">Typical</option>
+          <option value="1">Asymptomatic</option>
+          <option value="2">Non Typical</option>
+        </datalist> -->
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="Restbp">Resting Blood Pressure</label>
+        <input
+          type="number"
+          min="1"
+          class="form-input"
+          name="Restbp"
+          placeholder="Ex: 120 (mmHg)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="Chol">Cholesterol</label>
+        <input
+          type="number"
+          min="1"
+          class="form-input"
+          name="Chol"
+          placeholder="Ex: 200 (mg/dL)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="FBS">Fasting Blood Sugar</label>
+        <input
+          type="number"
+          min="1"
+          class="form-input"
+          name="FBS"
+          placeholder="Ex: 90 (mg/dL)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="Restecg">Resting ECG</label>
+        <input
+          type="number"
+          min="0"
+          class="form-input"
+          name="Restecg"
+          placeholder="Ex: 0 (normal)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="thalach">Maximum Heart Rate Achieved (Thalach)</label>
+        <input
+          type="number"
+          min="1"
+          class="form-input"
+          name="thalach"
+          placeholder="Ex: 180 (bpm)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="Exang">Exercise Induced Angina</label>
+        <select type="number" class="form-input" name="Exang" required>
+          <option value="0">Yes</option>
+          <option value="1">No</option>
+        </select>
+        <!-- <input
+          type="number"
+          min="0"
+          class="form-input"
+          name="Exang"
+          placeholder=""
+          required
+        /> -->
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="Oldpeak">ST Depression (oldpeak)</label>
+        <input
+          type="number"
+          step="0.01"
+          min="0"
+          class="form-input"
+          name="Oldpeak"
+          placeholder="Ex: 0.5 (mm)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="slope">Slope of the peak exercise</label>
+        <input
+          type="number"
+          min="1"
+          class="form-input"
+          name="slope"
+          placeholder="Ex: 2 (upsloping)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="ca">No. of major vessels(CA)</label>
+        <input
+          type="number"
+          min="0"
+          class="form-input"
+          name="ca"
+          placeholder="Ex: 0 (normal)"
+          required
+        />
+      </div>
+      <div class="form-section">
+        <label class="form-label" for="thal">Thalassemia</label>
+        <select type="number" class="form-input" name="thal" required>
+          <option value="0">Fixed</option>
+          <option value="1">Normal</option>
+          <option value="2">Reversable</option>
+        </select>
+        <!-- <input
+          list="browsers1"
+          type="number" min="0"
+          class="form-input"
+          name="thal"
+          placeholder=""
+          required
+        />
+        <datalist id="browsers1">
+          <option value="0">Fixed</option>
+          <option value="1">Normal</option>
+          <option value="2">Reversable</option>
+        </datalist> -->
+      </div>
+      <div class="form-section submit-btn-outer">
+        <button
+          class="submit-btn brand-link"
+          type="submit"
+          value="Submit"
+          data-toggle="modal"
+          data-target="#exampleModal"
+        >
+          Analyse
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
-  
-</div>
-</div>
-</div>
-
-</div>
-      
-
-
 {% endblock body %}
