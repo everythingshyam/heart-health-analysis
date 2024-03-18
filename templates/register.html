@@ -12,7 +12,9 @@
   <hr />
   <div class="medical-form">
     <form method="POST">
-      {% csrf_token %} {{ register_form|crispy }}
+      {% csrf_token %} 
+      <!--  -->
+      {{ register_form|crispy }}
       <div class="form-section submit-btn-outer">
         <button class="submit-btn brand-link" type="submit">Register</button>
       </div>

@@ -13,7 +13,9 @@
   <hr>
   <div class="medical-form">
     <form action="login1" method="POST">
-      {% csrf_token %} {{login_form|crispy}}
+      {% csrf_token %} 
+      <!--  -->
+      {{login_form|crispy}}
       <div class="form-section submit-btn-outer">
         <button class="submit-btn brand-link" type="submit">Login</button>
       </div>
