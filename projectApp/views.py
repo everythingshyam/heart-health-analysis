@@ -83,7 +83,8 @@ def result(request):
 
             # Traning model
             from joblib import dump , load
-            model=load('C:/Users/shyam/OneDrive/Desktop/100%heart_disease_detection_web_updated/100%heart_disease_detection_web_updated/100%heart_disease_detection_web_updated/heart_disease_detection_web/Hello/projectApp/model/heart_model.joblib')
+            model=load('C:/Users/shyam/Documents/Coding/heart-health-analysis/projectApp/model/heart_model.joblib')
+            # model=load('C:/Users/shyam/OneDrive/Desktop/100%heart_disease_detection_web_updated/100%heart_disease_detection_web_updated/100%heart_disease_detection_web_updated/heart_disease_detection_web/Hello/projectApp/model/heart_model.joblib')
             
             # Make prediction
             result = model.predict([lis])
@@ -112,7 +113,8 @@ def result_new(request):
         #if request.POST.get('action') == 'post':
             # Traning model
             from joblib import dump , load
-            model=load('C:/Users/shyam/OneDrive/Desktop/100%heart_disease_detection_web_updated/100%heart_disease_detection_web_updated/100%heart_disease_detection_web_updated/heart_disease_detection_web/Hello/projectApp/model/SVM_model.joblib')
+            model=load('C:/Users/shyam/Documents/Coding/heart-health-analysis/projectApp/model/SVM_model.joblib')
+            # model=load('C:/Users/shyam/OneDrive/Desktop/100%heart_disease_detection_web_updated/100%heart_disease_detection_web_updated/100%heart_disease_detection_web_updated/heart_disease_detection_web/Hello/projectApp/model/SVM_model.joblib')
             # Receive data from client
             lis = []       
             # Receive data from client
